@@ -49,8 +49,11 @@ function displaySortedImages(){
         let imageItem = document.createElement('div');
         imageItem.className = 'image-item';
         imageItem.innerHTML = `
+            <a href="https://opensea.io/assets/ethereum/0xb286ac8eff9f44e2c377c6770cad5fc78bff9ed6/${parseInt(index)+1}" target="_blank">
             <img src="${imageList[index]}" alt="Image" width="100">
+            </a>
             <span class="image-score">${score}</span>
+            
         `;
         imageSortedList.appendChild(imageItem);
     });
