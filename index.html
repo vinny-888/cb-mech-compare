@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <div>
+        <div>
+            <div class="side-panel">
+                <div>
+                    <div class="image-score-header">Mech</div>
+                    <div class="image-score-header">Votes</div>
+                </div>
+                <div>&nbsp;</div>
+                <div id="image-list"></div>
+            </div>
+        </div>
+        <div>
+            <div class="header">
+                <h1>Which Mech do you like more?</h1>
+            </div>
+            <div class="image-container">
+                <div class="image-block">
+                    <img id="image1" class="random-image" src="" alt="Random Image 1"/>
+                    <button class="score-btn" onclick="increaseScoreLeft()">Choose</button>
+                </div>
+                <div class="image-block">
+                    <img id="image2" class="random-image" src="" alt="Random Image 2"/>
+                    <button class="score-btn" onclick="increaseScoreRight()">Choose</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="mechs.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
