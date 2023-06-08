@@ -906,4 +906,6 @@ const names = ["Unhcegila, The Powerful One",
 "Maw",
 "The Fatal Beauty",
 "Junkpile Chomp",
-"Destruction"]
+"Destruction",
+"Castiron",
+"Captain Jack Lifeline"]

@@ -1,4 +1,4 @@
-const totalMechs = 909;
+const totalMechs = 911;
 const base_url = 'https://m.cyberbrokers.com/eth/mech/';
 
 let randomIndex1, randomIndex2;
@@ -133,11 +133,11 @@ async function getImage(tokenId){
     let url = base_url + tokenId;
     const response = await fetch(url);
     const jsonData = await response.json();
-    return jsonData.name;
+    return jsonData.image;
 }
 
 async function getAllImages(){
-    for(let i=838; i<=totalMechs; i++){
+    for(let i=910; i<=totalMechs; i++){
         let url = await getImage(i);
         console.log(i, url);
         imageList2.push(url);

@@ -906,4 +906,6 @@ const imageList = ["https://cb-media.sfo3.cdn.digitaloceanspaces.com/mechs/c4ca4
 "https://cb-media.sfo3.cdn.digitaloceanspaces.com/mechs/c8fbbc86abe8bd6a5eb6a3b4d0411301/e4421a39-4d99-4985-a8a4-2822783b9fa1/images/nft_image.webp",
 "https://cb-media.sfo3.cdn.digitaloceanspaces.com/mechs/621461af90cadfdaf0e8d4cc25129f91/418c99dd-a41a-4ad4-be47-e4d189c7fd48/images/nft_image.webp",
 "https://cb-media.sfo3.cdn.digitaloceanspaces.com/mechs/8b6dd7db9af49e67306feb59a8bdc52c/757a3df9-881d-40de-8b5c-ffe38760cc93/images/nft_image.webp",
-"https://cb-media.sfo3.cdn.digitaloceanspaces.com/mechs/a4300b002bcfb71f291dac175d52df94/9ef1d65c-849e-4917-97a4-cb4b72a6d040/images/nft_image.webp"];
+"https://cb-media.sfo3.cdn.digitaloceanspaces.com/mechs/a4300b002bcfb71f291dac175d52df94/9ef1d65c-849e-4917-97a4-cb4b72a6d040/images/nft_image.webp",
+"https://cb-media.sfo3.cdn.digitaloceanspaces.com/mechs/e205ee2a5de471a70c1fd1b46033a75f/59b408ff-c8a4-4575-8b15-078f83701643/images/nft_image.webp",
+"https://cb-media.sfo3.cdn.digitaloceanspaces.com/mechs/b56a18e0eacdf51aa2a5306b0f533204/956f7e31-5dbb-49e0-919e-1bc823f4ad7e/images/nft_image.webp"];
