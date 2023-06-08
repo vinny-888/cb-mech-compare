@@ -110,9 +110,13 @@ async function updateAndLoadScores(tokenId){
 async function loadScores(){
     let scores = await getScores();
     imageScores = {};
+    let total = 0;
     scores.forEach((score)=>{
         imageScores[score.token_id] = score.score;
+        total += score.score;
     })
+    document.getElementById('total_votes').innerHTML = total + ' Total Votes!';
+    document.getElementById('total_scores').innerHTML = scores.length + ' Mechs Scored!';
 }
 
 let imageList2 = [];
