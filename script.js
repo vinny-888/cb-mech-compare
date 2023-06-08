@@ -37,6 +37,8 @@ function checkKey(e) {
 function displayRandomImages() {
     const image1 = document.getElementById('image1');
     const image2 = document.getElementById('image2');
+    const name1 = document.getElementById('name1');
+    const name2 = document.getElementById('name2');
     
     // Get two distinct random indices
     do {
@@ -47,6 +49,9 @@ function displayRandomImages() {
     // Set the source of the images to the URLs at the random indices
     image1.src = imageList[randomIndex1];
     image2.src = imageList[randomIndex2];
+
+    name1.innerHTML = names[randomIndex1];
+    name2.innerHTML = names[randomIndex2];
 }
 
 async function increaseScoreLeft() {
@@ -73,11 +78,15 @@ function displaySortedImages(){
         let imageItem = document.createElement('div');
         imageItem.className = 'image-item';
         imageItem.innerHTML = `
-            <a href="https://opensea.io/assets/ethereum/0xb286ac8eff9f44e2c377c6770cad5fc78bff9ed6/${parseInt(index)+1}" target="_blank">
-            <img src="${imageList[index]}" alt="Image" width="100">
-            </a>
+            <div>
+                <div class="name">${names[index]}</div>
+                <div>
+                    <a href="https://opensea.io/assets/ethereum/0xb286ac8eff9f44e2c377c6770cad5fc78bff9ed6/${parseInt(index)+1}" target="_blank">
+                    <img src="${imageList[index]}" alt="Image" width="100">
+                    </a>
+                </div>
+            </div>
             <span class="image-score">${score}</span>
-            
         `;
         imageSortedList.appendChild(imageItem);
     });
@@ -124,11 +133,11 @@ async function getImage(tokenId){
     let url = base_url + tokenId;
     const response = await fetch(url);
     const jsonData = await response.json();
-    return jsonData.image;
+    return jsonData.name;
 }
 
 async function getAllImages(){
-    for(let i=838; i<totalMechs; i++){
+    for(let i=838; i<=totalMechs; i++){
         let url = await getImage(i);
         console.log(i, url);
         imageList2.push(url);
