@@ -15,6 +15,7 @@ body {
 .random-image {
     max-width: 100%;
     height: auto;
+    cursor: pointer;
 }
 
 .image-block {

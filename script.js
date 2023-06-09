@@ -143,3 +143,13 @@ async function getAllImages(){
         imageList2.push(url);
     }
 }
+
+function openLeftImage(){
+    let url = "https://opensea.io/assets/ethereum/0xb286ac8eff9f44e2c377c6770cad5fc78bff9ed6/"+(randomIndex1+1);
+    window.open(url, '_blank');
+}
+
+function openRightImage(){
+    let url = "https://opensea.io/assets/ethereum/0xb286ac8eff9f44e2c377c6770cad5fc78bff9ed6/"+(randomIndex2+1);
+    window.open(url, '_blank');
+}
