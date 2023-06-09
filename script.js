@@ -42,7 +42,13 @@ function displayRandomImages() {
     
     // Get two distinct random indices
     do {
-        randomIndex1 = Math.floor(Math.random() * totalMechs);
+        if(unscoredMechs.length > 0){
+            let randomUnscoredMech = Math.floor(Math.random() * unscoredMechs.length)
+            randomIndex1 = unscoredMechs[randomUnscoredMech]-1;
+        } else {
+            randomIndex1 = Math.floor(Math.random() * totalMechs);
+        }
+        
         randomIndex2 = Math.floor(Math.random() * totalMechs);
     } while (randomIndex1 === randomIndex2 || imageList[randomIndex1] == '' || imageList[randomIndex2] == '');
     
@@ -116,6 +122,22 @@ async function updateAndLoadScores(tokenId){
     await loadScores();
 }
 
+let unscoredMechs = [];
+function createUnscoredArr(scores){
+    unscoredMechs = [];
+    for(let i=1; i<=totalMechs; i++){
+        if(i != 835 && i != 836 && i != 820){
+            unscoredMechs.push(i);
+        }
+    }
+    scores.forEach((score)=>{
+        var index = unscoredMechs.indexOf(parseInt(score.token_id));
+        if (index !== -1 && score.score > 3) {
+            unscoredMechs.splice(index, 1);
+        }
+    });
+}
+
 async function loadScores(){
     let scores = await getScores();
     imageScores = {};
@@ -126,6 +148,7 @@ async function loadScores(){
     })
     document.getElementById('total_votes').innerHTML = total + ' Total Votes!';
     document.getElementById('total_scores').innerHTML = scores.length + ' Mechs Scored!';
+    createUnscoredArr(scores);
 }
 
 let imageList2 = [];
