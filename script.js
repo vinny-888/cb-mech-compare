@@ -79,6 +79,29 @@ function displaySortedImages(){
     // Display the sorted images in the side panel
     const imageSortedList = document.getElementById('image-list');
     imageSortedList.innerHTML = '';
+
+    let stats = {};
+    orderedImages.forEach(index => {
+        let score = imageScores[index];
+        if(!stats[score]){
+            stats[score] = 0;
+        }
+        stats[score]++;
+    });
+
+    Object.keys(stats).reverse().forEach((key)=>{
+        let stat = stats[key];
+        let imageItem = document.createElement('div');
+        imageItem.className = 'image-item';
+        imageItem.innerHTML = `
+            <div>
+            ${key}
+            </div>
+            <span class="image-score">${stat}</span>
+        `;
+        imageSortedList.appendChild(imageItem);
+    });
+    /*
     orderedImages.forEach(index => {
         let score = imageScores[index];
         let imageItem = document.createElement('div');
@@ -96,6 +119,7 @@ function displaySortedImages(){
         `;
         imageSortedList.appendChild(imageItem);
     });
+    */
 }
 
 function getSortedKeys(obj) {
@@ -132,7 +156,7 @@ function createUnscoredArr(scores){
     }
     scores.forEach((score)=>{
         var index = unscoredMechs.indexOf(parseInt(score.token_id));
-        if (index !== -1 && score.score > 3) {
+        if (index !== -1 && score.score >= 4) {
             unscoredMechs.splice(index, 1);
         }
     });
