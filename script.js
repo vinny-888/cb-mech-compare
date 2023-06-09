@@ -44,7 +44,7 @@ function displayRandomImages() {
     do {
         if(unscoredMechs.length > 0){
             let randomUnscoredMech = Math.floor(Math.random() * unscoredMechs.length)
-            randomIndex1 = unscoredMechs[randomUnscoredMech]-1;
+            randomIndex1 = unscoredMechs[randomUnscoredMech];
         } else {
             randomIndex1 = Math.floor(Math.random() * totalMechs);
         }
