@@ -50,6 +50,9 @@ let mechs = [];
     }
   }
 const createMechCard = (mech, res) => {
+  if(!mech){
+    return;
+  }
     // Create the elements for the card
     const card = document.createElement("div");
     card.classList.add('card');
