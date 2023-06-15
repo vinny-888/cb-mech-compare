@@ -1,4 +1,4 @@
-const totalMechs = 911;
+const totalMechs = 1010;
 const base_url = 'https://m.cyberbrokers.com/eth/mech/';
 
 let randomIndex1, randomIndex2;
@@ -150,7 +150,7 @@ let unscoredMechs = [];
 function createUnscoredArr(scores){
     unscoredMechs = [];
     for(let i=1; i<=totalMechs; i++){
-        if(i != 835 && i != 836 && i != 820){
+        if(i != 835 && i != 836 && i != 820 && i != 862){
             unscoredMechs.push(i);
         }
     }
@@ -176,18 +176,33 @@ async function loadScores(){
 }
 
 let imageList2 = [];
+let nameList = [];
 async function getImage(tokenId){
     let url = base_url + tokenId;
     const response = await fetch(url);
     const jsonData = await response.json();
     return jsonData.image;
 }
+async function getName(tokenId){
+    let url = base_url + tokenId;
+    const response = await fetch(url);
+    const jsonData = await response.json();
+    return jsonData.name;
+}
 
 async function getAllImages(){
-    for(let i=910; i<=totalMechs; i++){
+    for(let i=964; i<=totalMechs; i++){
         let url = await getImage(i);
         console.log(i, url);
-        imageList2.push(url);
+        nameList.push(url);
+    }
+}
+
+async function getAllNames(){
+    for(let i=964; i<=totalMechs; i++){
+        let name = await getName(i);
+        console.log(i, name);
+        nameList.push(name);
     }
 }
 
