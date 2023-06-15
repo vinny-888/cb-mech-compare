@@ -156,7 +156,7 @@ function createUnscoredArr(scores){
     }
     scores.forEach((score)=>{
         var index = unscoredMechs.indexOf(parseInt(score.token_id));
-        if (index !== -1 && score.score > 4) {
+        if (index !== -1 && score.score > 8) {
             unscoredMechs.splice(index, 1);
         }
     });
