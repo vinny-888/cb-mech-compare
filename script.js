@@ -3,6 +3,9 @@ const base_url = 'https://m.cyberbrokers.com/eth/mech/';
 
 let randomIndex1, randomIndex2;
 let imageScores = {};
+let selectOneNewMechsFirst = false;
+let minVotes = 10;
+let brokenMechs = [836, 837, 821, 863];
 
 window.onload = async function() {
 
@@ -42,7 +45,7 @@ function displayRandomImages() {
     
     // Get two distinct random indices
     do {
-        if(unscoredMechs.length > 0){
+        if(selectOneNewMechsFirst && unscoredMechs.length > 0){
             let randomUnscoredMech = Math.floor(Math.random() * unscoredMechs.length)
             randomIndex1 = unscoredMechs[randomUnscoredMech];
         } else {
@@ -150,13 +153,14 @@ let unscoredMechs = [];
 function createUnscoredArr(scores){
     unscoredMechs = [];
     for(let i=1; i<=totalMechs; i++){
-        if(i != 835 && i != 836 && i != 820 && i != 862){
+        // Exclude broken mechs
+        if(brokenMechs.indexOf(i-1) != -1){
             unscoredMechs.push(i);
         }
     }
     scores.forEach((score)=>{
         var index = unscoredMechs.indexOf(parseInt(score.token_id));
-        if (index !== -1 && score.score > 10) {
+        if (index !== -1 && score.score > minVotes) {
             unscoredMechs.splice(index, 1);
         }
     });
@@ -172,7 +176,9 @@ async function loadScores(){
     })
     document.getElementById('total_votes').innerHTML = total + ' Total Votes!';
     document.getElementById('total_scores').innerHTML = scores.length + ' Mechs Scored!';
-    createUnscoredArr(scores);
+    if(selectOneNewMechsFirst){
+        createUnscoredArr(scores);
+    }
 }
 
 let imageList2 = [];
