@@ -13,8 +13,7 @@ window.onload = async function() {
     document.onkeydown = checkKey;
 
     await loadScores();
-    displayRandomImages();
-    displaySortedImages();
+    newMechs();
 };
 
 function checkKey(e) {
@@ -70,16 +69,19 @@ function displayRandomImages() {
     name2.innerHTML = names[randomIndex2];
 }
 
-async function increaseScoreLeft() {
-    await updateAndLoadScores(randomIndex1);
+function newMechs(){
     displayRandomImages();
     displaySortedImages();
 }
 
+async function increaseScoreLeft() {
+    await updateAndLoadScores(randomIndex1);
+    newMechs();
+}
+
 async function increaseScoreRight() {
     await updateAndLoadScores(randomIndex2);
-    displayRandomImages();
-    displaySortedImages();
+    newMechs();
 }
 
 function displaySortedImages(){

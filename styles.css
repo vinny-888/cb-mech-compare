@@ -90,3 +90,14 @@ body {
     background-color: #101918;
     color: #9bfff4;
   }
+
+.skip{
+    position: absolute;
+    bottom: 0px;
+    left: -36px;
+    background-color: #ff0000;
+}
+
+.skip-block{
+    position: relative;
+}
