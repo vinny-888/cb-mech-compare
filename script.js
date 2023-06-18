@@ -183,7 +183,7 @@ async function loadScores(){
     })
     document.getElementById('total_votes').innerHTML = total + ' Total Votes!';
     document.getElementById('total_scores').innerHTML = scores.length + ' Mechs Scored!';
-    if(selectOneNewMechsFirst){
+    if(selectNewMechsFirst){
         createUnscoredArr(scores);
     }
 }
