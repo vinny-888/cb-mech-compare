@@ -304,3 +304,12 @@ label{
   margin-left: 10px;
     margin-top: 10px;
 }
+
+select{
+  color: #9bfff4;
+}
+
+#load_more{
+  cursor: pointer;
+  border-radius: 4px;
+}

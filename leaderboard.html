@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Smash or Crash</title>
-    <link rel="stylesheet" type="text/css" href="leaderboard.css?v=1.1">
+    <link rel="stylesheet" type="text/css" href="leaderboard.css?v=1.2">
 </head>
 <body>
     <div style="height: 100%;width: 100%;">
@@ -15,15 +15,22 @@
                 <br>
                 <div style="text-align: center;">
                     <a href="./index.html" style="color: #fff;">Compare View</a>
+                    <label>Sort By: </label>
+                    <select id="sortorder" onchange="resort()">
+                        <option value="most" selected>Most Votes</option>
+                        <option value="least">Least Votes</option>
+                    </select>
                 </div>
                 <br>
             </div>
             <div class="container2" id="mech-container"></div>
+
+            <input type="button" onclick="loadMore()"  id="load_more" value="Load More" style="margin-left: 46.5%;">
         </div>
     </div>
-    <script src="metadata.js?v=1.1"></script>
-    <script src="names.js?v=1.1"></script>
-    <script src="mechs.js?v=1.1"></script>
-    <script src="leaderboard.js?v=1.1"></script>
+    <script src="metadata.js?v=1.2"></script>
+    <script src="names.js?v=1.2"></script>
+    <script src="mechs.js?v=1.2"></script>
+    <script src="leaderboard.js?v=1.2"></script>
 </body>
 </html>

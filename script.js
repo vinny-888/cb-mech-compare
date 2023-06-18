@@ -3,8 +3,9 @@ const base_url = 'https://m.cyberbrokers.com/eth/mech/';
 
 let randomIndex1, randomIndex2;
 let imageScores = {};
-let selectOneNewMechsFirst = false;
-let minVotes = 10;
+let selectNewMechsFirst = false;
+let minVotes = 0;
+let maxVotes = 5;
 let brokenMechs = [836, 837, 821, 863];
 
 window.onload = async function() {
@@ -45,14 +46,20 @@ function displayRandomImages() {
     
     // Get two distinct random indices
     do {
-        if(selectOneNewMechsFirst && unscoredMechs.length > 0){
+        if(selectNewMechsFirst && unscoredMechs.length > 0){
             let randomUnscoredMech = Math.floor(Math.random() * unscoredMechs.length)
             randomIndex1 = unscoredMechs[randomUnscoredMech];
         } else {
             randomIndex1 = Math.floor(Math.random() * totalMechs);
         }
         
-        randomIndex2 = Math.floor(Math.random() * totalMechs);
+        if(selectNewMechsFirst && unscoredMechs.length > 0){
+            let randomUnscoredMech = Math.floor(Math.random() * unscoredMechs.length)
+            randomIndex2 = unscoredMechs[randomUnscoredMech];
+        } else {
+            randomIndex2 = Math.floor(Math.random() * totalMechs);
+        }
+        
     } while (randomIndex1 === randomIndex2 || imageList[randomIndex1] == '' || imageList[randomIndex2] == '');
     
     // Set the source of the images to the URLs at the random indices
@@ -154,13 +161,13 @@ function createUnscoredArr(scores){
     unscoredMechs = [];
     for(let i=1; i<=totalMechs; i++){
         // Exclude broken mechs
-        if(brokenMechs.indexOf(i-1) != -1){
+        if(brokenMechs.indexOf(i-1) == -1){
             unscoredMechs.push(i);
         }
     }
     scores.forEach((score)=>{
         var index = unscoredMechs.indexOf(parseInt(score.token_id));
-        if (index !== -1 && score.score > minVotes) {
+        if (index !== -1 && (score.score < minVotes || score.score > maxVotes)) {
             unscoredMechs.splice(index, 1);
         }
     });

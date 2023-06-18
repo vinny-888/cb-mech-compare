@@ -1,8 +1,11 @@
 const totalMechs = 911;
 const base_url = 'https://m.cyberbrokers.com/eth/mech/';
 
+let pageSize = 100;
+let loadedCount = 0;
 let randomIndex1, randomIndex2;
 let imageScores = {};
+let sortOrder = 'most';
 
 window.onload = async function() {
     await loadScores();
@@ -10,9 +13,20 @@ window.onload = async function() {
     displayMechs();
 };
 
+function resort(){
+  sortOrder = document.getElementById('sortorder').value;
+  pageSize = 100;
+  loadedCount = 0;
+  displayMechs();
+}
+
 function getSortedKeys(obj) {
     var keys = Object.keys(obj);
-    return keys.sort(function(a,b){return obj[b]-obj[a]});
+    if(sortOrder == 'most'){
+      return keys.sort(function(a,b){return obj[b]-obj[a]});
+    } else {
+      return keys.sort(function(a,b){return obj[a]-obj[b]});
+    }
 }
 
 async function getScores(){
@@ -120,14 +134,22 @@ const createMechCard = (mech, res) => {
     return metadata.find((meta)=>meta.tokenId == tokenId);
   }
 
+  function loadMore(){
+    pageSize += 100;
+    displayMechs();
+  }
+
   function displayMechs(){
     let container = document.querySelector("#mech-container"); 
-    
+    container.innerHTML = '';
     let orderedImages = getSortedKeys(imageScores);
 
-    orderedImages.forEach((tokenId)=>{
+    [].concat(orderedImages).splice(loadedCount,Math.min(orderedImages.length, pageSize)).forEach((tokenId)=>{
         let mech = getMech(parseInt(tokenId)+1);
-        container.appendChild(createMechCard(mech));
+        if(mech){
+          let card = createMechCard(mech);
+          container.appendChild(card);
+        }
     })
     
   }
