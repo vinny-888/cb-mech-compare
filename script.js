@@ -5,7 +5,7 @@ let randomIndex1, randomIndex2;
 let imageScores = {};
 let selectNewMechsFirst = false;
 let minVotes = 0;
-let maxVotes = 5;
+let maxVotes = 0;
 let brokenMechs = [836, 837, 821, 863];
 
 window.onload = async function() {
