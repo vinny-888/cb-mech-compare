@@ -27,8 +27,8 @@ function checkKey(e) {
     else if (e.keyCode == '39') {
         // right arrow
         increaseScoreRight();
-    } else if (e.keyCode == '32') {
-        // space
+    } else if (e.keyCode == '38') {
+        // up
         newMechs();
     }
 
