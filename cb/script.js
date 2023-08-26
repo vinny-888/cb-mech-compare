@@ -189,7 +189,7 @@ async function loadScores(){
         total += score.wins;
     })
     document.getElementById('total_votes').innerHTML = total + ' Total Matches!';
-    document.getElementById('total_scores').innerHTML = scores.length + ' CyberBrokers Battled!';
+    document.getElementById('total_scores').innerHTML = Object.keys(imageScores).length + ' CyberBrokers Battled!';
     if(selectNewMechsFirst){
         createUnscoredArr(scores);
     }

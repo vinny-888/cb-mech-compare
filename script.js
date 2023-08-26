@@ -187,7 +187,7 @@ async function loadScores(){
         total += score.wins;
     })
     document.getElementById('total_votes').innerHTML = total + ' Total Battles!';
-    document.getElementById('total_scores').innerHTML = scores.length + ' Mechs Battled!';
+    document.getElementById('total_scores').innerHTML = Object.keys(imageScores).length + ' Mechs Battled!';
     if(selectNewMechsFirst){
         createUnscoredArr(scores);
     }
