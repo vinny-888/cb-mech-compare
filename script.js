@@ -41,20 +41,26 @@ function displayRandomImages() {
     const name2 = document.getElementById('name2');
     
     // Get two distinct random indices
-    do {
-        if(selectNewMechsFirst && unscoredMechs.length > 0){
-            let randomUnscoredMech = Math.floor(Math.random() * unscoredMechs.length)
-            randomIndex1 = unscoredMechs[randomUnscoredMech];
-        } else {
-            randomIndex1 = Math.floor(Math.random() * totalMechs);
-        }
+    // do {
+    //     if(selectNewMechsFirst && unscoredMechs.length > 0){
+    //         let randomUnscoredMech = Math.floor(Math.random() * unscoredMechs.length)
+    //         randomIndex1 = unscoredMechs[randomUnscoredMech];
+    //     } else {
+    //         randomIndex1 = Math.floor(Math.random() * totalMechs);
+    //     }
         
-        if(selectNewMechsFirst && unscoredMechs.length > 0){
-            let randomUnscoredMech = Math.floor(Math.random() * unscoredMechs.length)
-            randomIndex2 = unscoredMechs[randomUnscoredMech];
-        } else {
-            randomIndex2 = Math.floor(Math.random() * totalMechs);
-        }
+    //     if(selectNewMechsFirst && unscoredMechs.length > 0){
+    //         let randomUnscoredMech = Math.floor(Math.random() * unscoredMechs.length)
+    //         randomIndex2 = unscoredMechs[randomUnscoredMech];
+    //     } else {
+    //         randomIndex2 = Math.floor(Math.random() * totalMechs);
+    //     }
+        
+    // } while (randomIndex1 === randomIndex2);
+
+    do {
+        randomIndex1 = Math.round(Math.random() * totalMechs)
+        randomIndex2 = Math.round(Math.random() * totalMechs)
         
     } while (randomIndex1 === randomIndex2);
     
