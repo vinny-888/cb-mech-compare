@@ -62,13 +62,16 @@ function displayRandomImages() {
         randomIndex1 = Math.round(Math.random() * 10001)
         randomIndex2 = Math.round(Math.random() * 10001)
     } while (randomIndex1 === randomIndex2);
+
+    let broker1 = cyberbrokers[''+randomIndex1];
+    let broker2 = cyberbrokers[''+randomIndex2];
     
     // Set the source of the images to the URLs at the random indices
-    image1.src = 'https://ipfs.io/ipfs/QmcsrQJMKA9qC9GcEMgdjb9LPN99iDNAg8aQQJLJGpkHxk/'+randomIndex1+'.svg'
-    image2.src = 'https://ipfs.io/ipfs/QmcsrQJMKA9qC9GcEMgdjb9LPN99iDNAg8aQQJLJGpkHxk/'+randomIndex2+'.svg'
+    image1.src = broker1.image;//'https://ipfs.io/ipfs/QmcsrQJMKA9qC9GcEMgdjb9LPN99iDNAg8aQQJLJGpkHxk/'+randomIndex1+'.svg'
+    image2.src = broker2.image;//'https://ipfs.io/ipfs/QmcsrQJMKA9qC9GcEMgdjb9LPN99iDNAg8aQQJLJGpkHxk/'+randomIndex2+'.svg'
 
-    // name1.innerHTML = names[randomIndex1];
-    // name2.innerHTML = names[randomIndex2];
+    name1.innerHTML = broker1.name + ' - ' + broker1.talent;
+    name2.innerHTML = broker2.name + ' - ' + broker2.talent;
 }
 
 function newMechs(){

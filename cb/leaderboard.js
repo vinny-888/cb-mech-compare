@@ -52,6 +52,9 @@ const createMechCard = (mech, res) => {
   if(!mech){
     return;
   }
+
+
+    let broker = cyberbrokers[mech.token_id];
     // Create the elements for the card
     const card = document.createElement("div");
     card.classList.add('card');
@@ -70,7 +73,7 @@ const createMechCard = (mech, res) => {
 
     const nameLabel = document.createElement('div');
     nameLabel.className = 'card-heading';
-    nameLabel.textContent = mech.name;
+    nameLabel.textContent = broker.name;
     name.appendChild(nameLabel);
     name.appendChild(icon);
 
@@ -81,24 +84,28 @@ const createMechCard = (mech, res) => {
     // Set the content of the elements
     // name.textContent = mech.name;
     image.setAttribute('crossOrigin', "anonymous");
-    image.src = 'https://ipfs.io/ipfs/QmcsrQJMKA9qC9GcEMgdjb9LPN99iDNAg8aQQJLJGpkHxk/'+mech.token_id+'.svg'
+    image.src = 'https://ipfs.io/ipfs/QmcsrQJMKA9qC9GcEMgdjb9LPN99iDNAg8aQQJLJGpkHxk/'+mech.token_id+'.svg';//broker.image; //
 
-    // let speed = mech.attributes.find(attr => attr.trait_type === "Speed").value;
-    // let endurance = mech.attributes.find(attr => attr.trait_type === "Endurance").value;
-    // let power = mech.attributes.find(attr => attr.trait_type === "Power").value;
+    let mind = parseInt(broker.mind);
+    let body = parseInt(broker.body);
+    let soul = parseInt(broker.soul);
 
     // <p style="display: none;">${mech.clean_description}</p>
     let html = `
-   
+
     <p style="display: none;"></p>
       <div class="stats">
     `;
 
-    html += addSegment('Ranking', mech.score);
-    html += addSegment('Wins', mech.wins);
-    html += addSegment('Losses', mech.losses);
+    html += addSegment('Mind', mind);
+    html += addSegment('Body', body);
+    html += addSegment('Soul', soul);
 
-    html += '<div style="text-align: center;width: 100%;">'+imageScores[mech.token_id]+' Votes!</div>';
+    // html += '<div style="text-align: center;width: 100%;">'+imageScores[mech.token_id]+' Votes!</div>';
+
+    html += '<div style="text-align: center;width: 100%;">'+imageScores[mech.token_id].score+' Ranking ('+imageScores[mech.token_id].wins+'W / '+imageScores[mech.token_id].losses+'L)</div>';
+    // html += '<div style="text-align: left;width: 100%;">'+imageScores[mech.token_id].wins+' Wins</div>';
+    // html += '<div style="text-align: left;width: 100%;">'+imageScores[mech.token_id].losses+' Losses</div>';
 
     html += '</div>';
 
@@ -137,8 +144,18 @@ const createMechCard = (mech, res) => {
     
   }
   const addSegment = (title, value) => {
+    const activeSegments = Math.round((value / 30) * 6);
     let html = `<div class="bar-container" id="${title}">
-      <span class="label">${title} (${value}):</span>
+                    <span class="label">${title} (${value}):</span>
+                    <div class="bar">`;
+    for(let i=0; i<6; i++){
+      let opacity = 0;
+      if (i < activeSegments) {
+        opacity = 1;
+      }
+      html += '<div class="segment" style="opacity: '+opacity+'"></div>';
+    }
+    html += `</div>
     </div>`;
     return html;
   }
