@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Smash or Crash</title>
+    <link rel="stylesheet" type="text/css" href="leaderboard.css?v=1.2">
+</head>
+<body>
+    <div style="height: 100%;width: 100%;">
+        
+        <div>
+            <div class="header">
+                <h1><span style="color: green;">SMASH</span> or <span style="color: red;">CRASH</span></h1>
+                <h2>Which CyberBroker floats your boat?</h2>
+                <span id="total_votes" class="votes"></span>&nbsp;&nbsp;&nbsp;<span id="total_scores" class="votes"></span>
+                <br>
+                <div style="text-align: center;">
+                    <a href="./index.html" style="color: #fff;">Compare View</a>
+                    <label>Sort By: </label>
+                    <select id="sortorder" onchange="resort()">
+                        <option value="most" selected>Most Votes</option>
+                        <option value="least">Least Votes</option>
+                    </select>
+                </div>
+                <br>
+            </div>
+            <div class="container2" id="mech-container"></div>
+
+            <input type="button" onclick="loadMore()"  id="load_more" value="Load More" style="margin-left: 46.5%;">
+        </div>
+    </div>
+    <script src="leaderboard.js?v=1.2"></script>
+</body>
+</html>

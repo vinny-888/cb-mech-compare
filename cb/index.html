@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Smash or Crash</title>
+    <link rel="stylesheet" type="text/css" href="styles.css?v=1.2">
+</head>
+<body>
+    <div style="height: 100%;">
+        <div>
+            <div class="side-panel">
+                <div style="text-align: center;">
+                    <a href="./leaderboard.html" style="color: #fff;">Gallery View</a>
+                </div>
+                <br><br>
+                <div>
+                    <div class="image-score-header">Ranking</div>
+                    <div class="image-score-header">Brokers</div>
+                </div>
+                <div>&nbsp;</div>
+                <div id="image-list"></div>
+            </div>
+        </div>
+        <div>
+            <div class="header">
+                <h1><span style="color: green;">SMASH</span> or <span style="color: red;">CRASH</span></h1>
+                <h2>Which CyberBroker floats your boat?</h2>
+                <span id="total_votes" class="votes"></span>&nbsp;&nbsp;&nbsp;<span id="total_scores" class="votes"></span>
+                <br><br>
+            </div>
+            <div class="image-container">
+                <div class="image-block">
+                    <h3 id="name1"></h3>
+                    <img id="image1" class="random-image" src="" alt="Random Image 1" onclick="openLeftImage()"/>
+                    <button class="score-btn" onclick="increaseScoreLeft()">Choose</button>
+                </div>
+                <div class="skip-block">
+                    <button class="score-btn skip" onclick="newMechs()">Skip</button>
+                </div>
+                <div class="image-block">
+                    <h3 id="name2"></h3>
+                    <img id="image2" class="random-image" src="" alt="Random Image 2" onclick="openRightImage()"/>
+                    <button class="score-btn" onclick="increaseScoreRight()">Choose</button>
+                </div>
+            </div>
+            <div class="header">
+                Left and Right arrow keys can be used to vote (space to skip)
+            </div>
+        </div>
+    </div>
+    <script src="script.js?v=1.2"></script>
+</body>
+</html>
