@@ -41,11 +41,11 @@ async function loadScores(){
     imageScores = {};
     let total = 0;
     scores.forEach((score)=>{
-        imageScores[score.token_id] = score.score;
-        total += score.score;
+        imageScores[score.token_id] = score;
+        total += score.wins;
     })
-    document.getElementById('total_votes').innerHTML = total + ' Total Votes!';
-    document.getElementById('total_scores').innerHTML = scores.length + ' Mechs Scored!';
+    document.getElementById('total_votes').innerHTML = total + ' Total Matches!';
+    document.getElementById('total_scores').innerHTML = scores.length + ' Mechs Battled!';
 }
 
 // Fetch the JSON data from the API
@@ -111,7 +111,9 @@ const createMechCard = (mech, res) => {
     html += addSegment('Endurance', endurance);
     html += addSegment('Power', power);
 
-    html += '<div style="text-align: center;width: 100%;">'+imageScores[mech.tokenId-1]+' Votes!</div>';
+    html += '<div style="text-align: left;width: 100%;">'+imageScores[mech.tokenId-1].score+' Ranking</div>';
+    html += '<div style="text-align: left;width: 100%;">'+imageScores[mech.tokenId-1].wins+' Wins</div>';
+    html += '<div style="text-align: left;width: 100%;">'+imageScores[mech.tokenId-1].losses+' Losses</div>';
 
     html += '</div>';
 

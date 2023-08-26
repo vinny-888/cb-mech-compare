@@ -72,12 +72,12 @@ function newMechs(){
 }
 
 async function increaseScoreLeft() {
-    await updateAndLoadScores(randomIndex1);
+    await updateAndLoadScores(randomIndex1, randomIndex2 );
     newMechs();
 }
 
 async function increaseScoreRight() {
-    await updateAndLoadScores(randomIndex2);
+    await updateAndLoadScores(randomIndex2, randomIndex1);
     newMechs();
 }
 
@@ -92,10 +92,10 @@ function displaySortedImages(){
     let stats = {};
     orderedImages.forEach(index => {
         let score = imageScores[index];
-        if(!stats[score]){
-            stats[score] = 0;
+        if(!stats[score.score]){
+            stats[score.score] = 0;
         }
-        stats[score]++;
+        stats[score.score]++;
     });
 
     Object.keys(stats).reverse().forEach((key)=>{
@@ -136,8 +136,8 @@ function getSortedKeys(obj) {
     return keys.sort(function(a,b){return obj[b]-obj[a]});
 }
 
-async function updateScore(tokenId){
-    let url = 'https://mech-models.glitch.me/mech-score?id='+tokenId;
+async function updateScore(tokenId1, tokenId2){
+    let url = 'https://mech-models.glitch.me/mech-score?id1='+tokenId1 + '&id2='+tokenId2;;
     const response = await fetch(url);
     const jsonData = await response.json();
     return jsonData;
@@ -150,8 +150,8 @@ async function getScores(){
     return jsonData;
 }
 
-async function updateAndLoadScores(tokenId){
-    await updateScore(tokenId);
+async function updateAndLoadScores(tokenId1, tokenId2){
+    await updateScore(tokenId1, tokenId2);
     await loadScores();
 }
 
@@ -177,11 +177,11 @@ async function loadScores(){
     imageScores = {};
     let total = 0;
     scores.forEach((score)=>{
-        imageScores[score.token_id] = score.score;
-        total += score.score;
+        imageScores[score.token_id] = score;
+        total += score.wins;
     })
-    document.getElementById('total_votes').innerHTML = total + ' Total Votes!';
-    document.getElementById('total_scores').innerHTML = scores.length + ' Mechs Scored!';
+    document.getElementById('total_votes').innerHTML = total + ' Total Battles!';
+    document.getElementById('total_scores').innerHTML = scores.length + ' Mechs Battled!';
     if(selectNewMechsFirst){
         createUnscoredArr(scores);
     }
