@@ -21,12 +21,12 @@ function resort(){
 }
 
 function getSortedKeys(obj) {
-    var keys = Object.keys(obj);
-    if(sortOrder == 'most'){
-      return keys.sort(function(a,b){return obj[b]-obj[a]});
-    } else {
-      return keys.sort(function(a,b){return obj[a]-obj[b]});
-    }
+  var keys = Object.keys(obj);
+  if(sortOrder == 'most'){
+    return keys.sort(function(a,b){return obj[b].score-obj[a].score});
+  } else {
+    return keys.sort(function(a,b){return obj[a].score-obj[b].score});
+  }
 }
 
 async function getScores(){
