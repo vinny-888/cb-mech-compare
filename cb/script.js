@@ -59,8 +59,8 @@ function displayRandomImages() {
     // } while (randomIndex1 === randomIndex2);
 
     do {
-        randomIndex1 = Math.random(Math.random() * 10001)
-        randomIndex2 = Math.random(Math.random() * 10001)
+        randomIndex1 = Math.round(Math.random() * 10001)
+        randomIndex2 = Math.round(Math.random() * 10001)
     } while (randomIndex1 === randomIndex2);
     
     // Set the source of the images to the URLs at the random indices
