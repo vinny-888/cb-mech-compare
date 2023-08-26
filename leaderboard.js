@@ -57,7 +57,7 @@ const fetchMechs = async (token) => {
   };
 let mechs = [];
   const fetchAllMechs = async ()=>{
-    for(let i= 964; i <= 1010; i++){
+    for(let i= 1010; i <= 1380; i++){
         let mech = await fetchMechs(i);
         console.log(i);
         mechs.push(mech);

@@ -1,4 +1,4 @@
-const totalMechs = 1010;
+const totalMechs = 1380;
 const base_url = 'https://m.cyberbrokers.com/eth/mech/';
 
 let randomIndex1, randomIndex2;
@@ -6,7 +6,7 @@ let imageScores = {};
 let selectNewMechsFirst = false;
 let minVotes = 0;
 let maxVotes = 0;
-let brokenMechs = [836, 837, 821, 863];
+let brokenMechs = [836, 837, 821, 863, 1079, 1152];
 
 window.onload = async function() {
 
@@ -56,11 +56,11 @@ function displayRandomImages() {
             randomIndex2 = Math.floor(Math.random() * totalMechs);
         }
         
-    } while (randomIndex1 === randomIndex2 || imageList[randomIndex1] == '' || imageList[randomIndex2] == '');
+    } while (randomIndex1 === randomIndex2);
     
     // Set the source of the images to the URLs at the random indices
-    image1.src = imageList[randomIndex1];
-    image2.src = imageList[randomIndex2];
+    image1.src = "https://m.cyberbrokers.com/eth/mech/"+randomIndex1 + "/files/nft_image.webp";
+    image2.src = "https://m.cyberbrokers.com/eth/mech/"+randomIndex2 + "/files/nft_image.webp";
 
     name1.innerHTML = names[randomIndex1];
     name2.innerHTML = names[randomIndex2];
@@ -203,7 +203,7 @@ async function getName(tokenId){
 }
 
 async function getAllImages(){
-    for(let i=964; i<=totalMechs; i++){
+    for(let i=1010; i<=totalMechs; i++){
         let url = await getImage(i);
         console.log(i, url);
         nameList.push(url);
@@ -211,7 +211,7 @@ async function getAllImages(){
 }
 
 async function getAllNames(){
-    for(let i=964; i<=totalMechs; i++){
+    for(let i=1010; i<=totalMechs; i++){
         let name = await getName(i);
         console.log(i, name);
         nameList.push(name);
