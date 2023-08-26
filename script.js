@@ -68,8 +68,8 @@ function displayRandomImages() {
     image1.src = "https://m.cyberbrokers.com/eth/mech/"+randomIndex1 + "/files/nft_image.webp";
     image2.src = "https://m.cyberbrokers.com/eth/mech/"+randomIndex2 + "/files/nft_image.webp";
 
-    name1.innerHTML = names[randomIndex1];
-    name2.innerHTML = names[randomIndex2];
+    name1.innerHTML = names[randomIndex1-1];
+    name2.innerHTML = names[randomIndex2-1];
 }
 
 function newMechs(){
@@ -225,11 +225,11 @@ async function getAllNames(){
 }
 
 function openLeftImage(){
-    let url = "https://opensea.io/assets/ethereum/0xb286ac8eff9f44e2c377c6770cad5fc78bff9ed6/"+(randomIndex1+1);
+    let url = "https://opensea.io/assets/ethereum/0xb286ac8eff9f44e2c377c6770cad5fc78bff9ed6/"+(randomIndex1);
     window.open(url, '_blank');
 }
 
 function openRightImage(){
-    let url = "https://opensea.io/assets/ethereum/0xb286ac8eff9f44e2c377c6770cad5fc78bff9ed6/"+(randomIndex2+1);
+    let url = "https://opensea.io/assets/ethereum/0xb286ac8eff9f44e2c377c6770cad5fc78bff9ed6/"+(randomIndex2);
     window.open(url, '_blank');
 }
