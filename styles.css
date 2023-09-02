@@ -101,3 +101,12 @@ body {
 .skip-block{
     position: relative;
 }
+
+@media screen and (max-width: 600px) {
+    .side-panel {
+      visibility: hidden;
+      clear: both;
+      float: left;
+      display: none;
+    }
+  }
